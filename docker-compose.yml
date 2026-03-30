@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ctf-strapi
+    ports:
+      - "1337:1337"
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=1337
+      # อย่าลืมสร้างไฟล์ .env ไว้ระดับเดียวกับ docker-compose.yml เพื่อเก็บค่าพวกนี้นะครับ
+      - APP_KEYS=${APP_KEYS}
+      - API_TOKEN_SALT=${API_TOKEN_SALT}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - TRANSFER_TOKEN_SALT=${TRANSFER_TOKEN_SALT}
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - ./backend/public/uploads:/opt/app/public/uploads
+      - ./backend/.tmp:/opt/app/.tmp
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      # ส่งค่า IP เข้าไปตอนกำลัง Build
+      args:
+        - NEXT_PUBLIC_STRAPI_URL=http://103.142.151.114:1337
+    container_name: ctf-nextjs
+    ports:
+      - "3000:3000"
+    environment:
+      # สำหรับ Next.js (Server-side) คุยกับ Strapi ภายในวง Docker เดียวกัน
+      - STRAPI_URL=http://backend:1337
+      # สำหรับ Next.js (Client-side/Browser) คุยกับ Strapi ผ่าน IP ของ VPS
+      - NEXT_PUBLIC_STRAPI_URL=http://103.142.151.114:1337
+      - STRAPI_API_TOKEN=${STRAPI_API_TOKEN}
+    depends_on:
+      - backend
+    restart: unless-stopped

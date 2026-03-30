@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "singularName": "submission",
+    "pluralName": "submissions",
+    "displayName": "Submission"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "user": { "type": "relation", "relation": "manyToOne", "target": "plugin::users-permissions.user" },
+    "challenge": { "type": "relation", "relation": "manyToOne", "target": "api::challenge.challenge" },
+    "correct": { "type": "boolean", "default": false },
+    "submittedFlag": { "type": "string", "private": true },
+    "pointsAwarded": { "type": "integer", "default": 0 }
+  }
+}
