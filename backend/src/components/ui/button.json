@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_ui_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

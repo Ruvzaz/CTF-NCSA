@@ -12,7 +12,7 @@ services:
       - NODE_ENV=production
       - HOST=0.0.0.0
       - PORT=1337
-      # อย่าลืมสร้างไฟล์ .env ไว้ระดับเดียวกับ docker-compose.yml เพื่อเก็บค่าพวกนี้นะครับ
+      # อย่าลืมสร้างไฟล์ .env ไว้ระดับเดียวกับ docker-compose.yml เพื่อเก็บค่า
       - APP_KEYS=${APP_KEYS}
       - API_TOKEN_SALT=${API_TOKEN_SALT}
       - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}

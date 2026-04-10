@@ -1,5 +1,4 @@
-export const STRAPI_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-export const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '';
+export const STRAPI_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 /**
  * Helper to make GET requests to Strapi
@@ -14,7 +13,6 @@ export async function fetchApi<T>(
   const mergedOptions: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
     },
     cache: 'no-store',
     ...options,

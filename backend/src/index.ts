@@ -19,6 +19,8 @@ export default {
           'api::event.event.findOne',
           'api::writeup.writeup.find',
           'api::writeup.writeup.findOne',
+          'api::challenge.challenge.find',
+          'api::challenge.challenge.findOne',
         ];
 
         for (const action of publicPermissions) {

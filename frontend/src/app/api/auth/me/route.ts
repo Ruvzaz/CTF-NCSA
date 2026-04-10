@@ -8,24 +8,9 @@ import { STRAPI_URL } from '@/lib/api';
  */
 export async function GET() {
   try {
-    const cookieStore = await cookies();
-    const jwt = cookieStore.get('jwt')?.value;
-
-    if (!jwt) {
-      return NextResponse.json({ user: null }, { status: 401 });
-    }
-
-    const strapiRes = await fetch(`${STRAPI_URL}/api/users/me`, {
-      headers: { Authorization: `Bearer ${jwt}` },
-    });
-
-    if (!strapiRes.ok) {
-      return NextResponse.json({ user: null }, { status: 401 });
-    }
-
-    const user = await strapiRes.json();
-    return NextResponse.json({ user });
+    // Auth disabled intentionally.
+    return NextResponse.json({ user: null });
   } catch (error) {
-    return NextResponse.json({ user: null }, { status: 500 });
+    return NextResponse.json({ user: null });
   }
 }

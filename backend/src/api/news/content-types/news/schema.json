@@ -9,6 +9,7 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string",
@@ -18,6 +19,12 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "content_blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "ui.button"
+      ]
     },
     "content": {
       "type": "richtext"

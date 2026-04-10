@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-public)", "sans-serif"],
         space: ["var(--font-space)", "sans-serif"],
-        mono: ["var(--font-fira)", "monospace"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
