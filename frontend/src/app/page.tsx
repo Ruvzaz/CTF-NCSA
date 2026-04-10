@@ -3,7 +3,7 @@ import { ModernContentCard, ModernContentCardProps } from "@/components/ModernCo
 import { SectionHeader } from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Megaphone, Calendar, FileText, Activity, ShieldCheck, Trophy, Users } from "lucide-react";
+import { Megaphone, Calendar, FileText, Activity, ShieldCheck, Trophy, Users, Database, Network, Server, Fingerprint, Lock } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
 
@@ -45,31 +45,31 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen">
       
       {/* 🚀 HERO SECTION: Pixel-Formal Hero */}
-      <section className="relative overflow-hidden bg-background border-b border-border">
+      <section className="relative overflow-hidden bg-background border-b border-border min-h-[calc(100vh-180px)] flex items-center justify-center">
         <div className="absolute inset-0 pixel-grid-bg opacity-100" />
         <div className="absolute inset-0 scanline-overlay pointer-events-none opacity-40" />
         
-        <div className="container mx-auto px-6 py-20 md:py-32 relative z-10">
+        <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="mb-6 flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary font-mono text-[10px] tracking-[0.3em] uppercase">
-              <ShieldCheck size={14} /> National Cybersecurity mission active
+            <div className="mb-6 flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary font-mono text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] uppercase">
+              <ShieldCheck size={14} className="flex-shrink-0" /> <span className="text-center sm:text-left">National Cybersecurity mission active</span>
             </div>
             
-            <h1 className="font-space text-5xl md:text-7xl font-bold text-primary mb-6 leading-[0.9] tracking-tighter uppercase whitespace-pre-line">
+            <h1 className="font-space text-4xl sm:text-5xl md:text-7xl font-bold text-primary mb-4 md:mb-6 leading-[1.1] md:leading-[0.9] tracking-tighter uppercase whitespace-pre-line">
               Defend. Resolve.{"\n"}
               <span className="text-accent underline decoration-4 underline-offset-8">Capture The Flag.</span>
             </h1>
             
-            <p className="font-mono text-xs md:text-sm text-text-secondary uppercase tracking-[0.2em] mb-10 max-w-2xl leading-relaxed">
+            <p className="font-mono text-[10px] md:text-xs lg:text-sm text-text-secondary uppercase tracking-[0.15em] md:tracking-[0.2em] mb-8 md:mb-10 max-w-2xl leading-relaxed">
               NATIONAL CYBERSECURITY AGENCY (NCSA) — OFFICIAL COMPETITION PLATFORM. 
               EXPOSE VULNERABILITIES, PROTECT INFRASTRUCTURE.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button size="lg" className="px-10 h-14 text-sm tracking-[0.25em]">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0">
+              <Button size="lg" className="w-full sm:w-auto px-8 md:px-10 h-12 md:h-14 text-[10px] md:text-sm tracking-[0.15em] md:tracking-[0.25em]">
                 [ ▶ ENTER COMPETITION ]
               </Button>
-              <Button size="lg" variant="outline" className="px-10 h-14 text-sm tracking-[0.25em]">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 md:px-10 h-12 md:h-14 text-[10px] md:text-sm tracking-[0.15em] md:tracking-[0.25em] bg-white">
                 [ VIEW CHALLENGES ]
               </Button>
             </div>
@@ -77,30 +77,30 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 📊 STATS BAR: Tactical Overview */}
-      <section className="bg-primary border-b-4 border-accent text-white py-4 overflow-hidden relative">
-        <div className="container mx-auto px-6 whitespace-nowrap overflow-x-auto no-scrollbar">
-          <div className="flex items-center justify-between gap-12 font-mono text-[11px] tracking-[0.3em] uppercase opacity-90">
-            <div className="flex items-center gap-3">
-              <Users size={16} className="text-accent" />
-              <span>PARTICIPANTS // <span className="text-white font-bold">1,247</span></span>
+      {/* 🤝 PARTNER LOGOS: Carousel Mockup */}
+      <section className="bg-white border-y border-border overflow-hidden relative py-4 md:py-6">
+        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+        
+        <div className="flex w-[200%] animate-marquee">
+          {[0, 1].map((i) => (
+            <div key={i} className="flex flex-1 justify-around items-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
+              {[
+                { Icon: ShieldCheck, label: 'GovSec Info' },
+                { Icon: Database,    label: 'Cyber.Data'  },
+                { Icon: Network,     label: 'Net_Works'   },
+                { Icon: Server,      label: 'Server Host' },
+                { Icon: Fingerprint, label: 'Global Ident'},
+                { Icon: Lock,        label: 'Secure Vault'},
+              ].map(({ Icon, label }) => (
+                <div key={label} className="flex items-center gap-1.5 md:gap-3 flex-shrink-0">
+                  <Icon size={20} className="md:hidden" />
+                  <Icon size={32} className="hidden md:block" />
+                  <span className="font-space font-bold uppercase text-xs md:text-base whitespace-nowrap">{label}</span>
+                </div>
+              ))}
             </div>
-            <div className="hidden md:block text-white/30">|</div>
-            <div className="flex items-center gap-3">
-              <Trophy size={16} className="text-accent" />
-              <span>CHALLENGES ACTIVE // <span className="text-white font-bold">48</span></span>
-            </div>
-            <div className="hidden md:block text-white/30">|</div>
-            <div className="flex items-center gap-3">
-              <Activity size={16} className="text-accent" />
-              <span>LIVE TEAMS // <span className="text-white font-bold">312</span></span>
-            </div>
-            <div className="hidden lg:block text-white/30">|</div>
-            <div className="hidden lg:flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span>GATEWAY STATUS: OK</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

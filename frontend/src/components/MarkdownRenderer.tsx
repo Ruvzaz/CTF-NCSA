@@ -32,7 +32,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
   });
 
   return (
-    <article className={`prose prose-invert max-w-3xl w-full mx-auto font-sans prose-code:font-mono p-4 md:p-8 ${className || ''}`}>
+    <article className={`prose prose-slate max-w-3xl w-full mx-auto font-sans prose-code:font-mono p-4 md:p-8 ${className || ''}`}>
       <ReactMarkdown remarkPlugins={[remarkBreaks]}>{sanitizedContent}</ReactMarkdown>
     </article>
   );
