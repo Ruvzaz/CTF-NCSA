@@ -1,3 +1,4 @@
+// Priority: STRAPI_URL (server-side Docker) → NEXT_PUBLIC_STRAPI_URL (build-time / browser) → local dev fallback
 export const STRAPI_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 /**

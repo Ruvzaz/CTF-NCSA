@@ -13,9 +13,9 @@ COPY . .
 # สร้างโฟลเดอร์ public ทิ้งไว้กันเหนียว
 RUN mkdir -p public
 
-# รับค่า IP มาฝังไว้ตอน Build
+# รับค่า IP/Domain มาฝังไว้ตอน Build (ส่งมาจาก docker-compose args)
 ARG NEXT_PUBLIC_STRAPI_URL
-ENV NEXT_PUBLIC_STRAPI_URL=http://103.142.151.114:1337
+ENV NEXT_PUBLIC_STRAPI_URL=${NEXT_PUBLIC_STRAPI_URL}
 
 RUN npm run build
 
